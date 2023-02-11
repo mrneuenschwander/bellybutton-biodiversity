@@ -94,20 +94,22 @@ function buildCharts(sample) {
     // Deliverable 1: 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order 
     // so the otu_ids with the most bacteria are last. 
-    var yticks = otu_ids.sort(function(b,a) {
-      return parseFloat(b) - parseFloat(b);
-    }).slice(0, 10).reverse().map(i => 'otuID ' + i);
-    console.log(yticks, sample_values)
+    var topTenOTU = otu_ids.slice(0,10)
+    var yticks = topTenOTU.reverse().map(i => "OTU " + i)
+    console.log(yticks)
+
+    var topTenValues = sample_values.slice(0,10)
+    var xticks = topTenValues.reverse()
 
     // Deliverable 1: 8. Create the trace for the bar chart. 
-    var barData = {
-      x: sample_values,
+    var barData = [{
+      x: xticks,
       y: yticks,
       text: otu_labels,
       name: "Bacteria Levels",
       type: "bar",
       orientation: "h"
-    };
+    }];
 
     // Deliverable 1: 9. Create the layout for the bar chart. 
     var barLayout = {
@@ -115,9 +117,11 @@ function buildCharts(sample) {
     };
 
     // Deliverable 1: 10. Use Plotly to plot the data with the layout. 
-    Plotly.newPlot("bar", [barData], barLayout);
+    Plotly.newPlot("bar", barData, barLayout);
     // Deliverable 2: 1. Create the trace for the bubble chart.
+    var bubbleData = [{
 
+    }]
     // Deliverable 2: 2. Create the layout for the bubble chart.
 
     // Deliverable 2: 3. Use Plotly to plot the data with the layout.
