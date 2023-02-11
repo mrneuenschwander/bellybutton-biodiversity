@@ -61,37 +61,61 @@ function buildCharts(sample) {
     console.log(data);
 
     // Deliverable 1: 3. Create a variable that holds the samples array. 
+    var samples = data.samples;
+    // console.log(samples)
 
     // Deliverable 1: 4. Create a variable that filters the samples for the object with the desired sample number.
+    var selectedSample = samples.filter(sampleObj => sampleObj.id == sample);
+    // console.log(selectedSample)
 
     // Deliverable 3: 1. Create a variable that filters the metadata array for the object with the desired sample number.
+    var metadata = data.metadata;
+    var volunteerInfo = metadata.filter(sampleObj => sampleObj.id == sample);
+    console.log(volunteerInfo);
 
     // Deliverable 1: 5. Create a variable that holds the first sample in the array.
+    var firstSample = selectedSample[0];
+    console.log(firstSample);
 
     // Deliverable 3: 2. Create a variable that holds the first sample in the metadata array.
+    var firstHost = volunteerInfo[0];
+    console.log(firstHost);
 
     // Deliverable 1: 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
+    var otu_ids = firstSample.otu_ids;
+    var otu_labels = firstSample.otu_labels;
+    var sample_values = firstSample.sample_values;
+    // console.log(otu_ids, otu_labels, sample_values);
 
     // Deliverable 3: 3. Create a variable that holds the washing frequency.
-
+    var wfreq = volunteerInfo[0].wfreq
+    // console.log(wfreq)
 
     // Deliverable 1: 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order 
     // so the otu_ids with the most bacteria are last. 
-    var yticks = 
+    var yticks = otu_ids.sort(function(b,a) {
+      return parseFloat(b) - parseFloat(b);
+    }).slice(0, 10).reverse().map(i => 'otuID ' + i);
+    console.log(yticks, sample_values)
 
     // Deliverable 1: 8. Create the trace for the bar chart. 
-    var barData = [
-
-    ];
+    var barData = {
+      x: sample_values,
+      y: yticks,
+      text: otu_labels,
+      name: "Bacteria Levels",
+      type: "bar",
+      orientation: "h"
+    };
 
     // Deliverable 1: 9. Create the layout for the bar chart. 
     var barLayout = {
-
+      title: "Top 10 Bacteria Cultures in Sample",
     };
 
     // Deliverable 1: 10. Use Plotly to plot the data with the layout. 
-
+    Plotly.newPlot("bar", [barData], barLayout);
     // Deliverable 2: 1. Create the trace for the bubble chart.
 
     // Deliverable 2: 2. Create the layout for the bubble chart.
