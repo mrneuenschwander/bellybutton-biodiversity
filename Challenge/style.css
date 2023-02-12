@@ -1,0 +1,11 @@
+.jumbotron {
+    background-image: url("button.jpeg");
+    background-size: 100% 100%;
+    text-align: center;
+}
+.bar-description {
+    text-align: center;
+}
+.bubble-description {
+    text-align: center;
+}

@@ -7,6 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Belly Button Biodiversity</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css" />
+
 </head>
 
 <body>
@@ -16,6 +18,24 @@
       <div class="col-md-12 jumbotron text-center">
         <h1>Belly Button Biodiversity Dashboard</h1>
         <p>Use the interactive charts below to explore the dataset</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 page-title">
+        <h3>Belly Buttons and the Bacteria Within<br>
+        <small>Please note darkmode filters will break some of the functionality. I'm not happy about it either.<small>
+        </small>
+      </h3>
+      <br><br>
+      </div>
+      <div class="col-md-8 page-body">
+        <p style="font-size: 14px;">
+          This page is intended to show in visual and easy-to-read form the diversity of bacterias present within the bellybuttons of a set of anonymized individuals.<br>
+          <br>Use the Test Subject ID Number box to select a sample, and the charts will update automatically. 
+          To see the data for a given chart or graph, just hover over the desired selection with your mouse, and a text box will appear with information about strains found in that sample!
+          Depending on which sample ID you look at, one may find that a sample (such as #940) shows a more well-rounded bacteria environment, as opposed to one like
+          #1577 which presents two very dominant strains with the rest lagging behind.
+        </p>
       </div>
     </div>
     <div class="row">
@@ -33,15 +53,24 @@
       </div>
       <div class="col-md-5">
         <div id="bar"></div>
+        <div class="row bar-description">
+          The top 10 strains of bacteria per Test Subject ID.
+        </div>
       </div>
       <div class="col-md-5">
         <div id="gauge"></div>
+      </div>
+      <div class="row gauge-description">
+        How many times per week a selected Test Subject ID washes their bellybutton.
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
         <div id="bubble"></div>
       </div>
+    </div>
+    <div class="row bubble-description">
+      Amounts and variants for all bacteria found in a given sample, per ID.
     </div>
   </div>
 
